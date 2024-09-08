@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    overflow-x: hidden;
+}
+.background{
+    background-image: url(../public/bg-4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: content-box;
+    min-height: 100dvh;
+}
+  
+.ufdb:not(:placeholder-shown):valid{
+    outline-color: green;
+}
+
+.ufdb:not(:placeholder-shown):invalid{
+    outline-color: red;
+}
+ 
