@@ -203,7 +203,7 @@ export const ContextProvider = ({ children }) => {
 
     handleResize();
     console.log(backendUrl)
-    const intervalTime = 1000 * 60 * 10;
+    const intervalTime = 1000 * 60 * 50;
 
     const interval = setInterval(() => {
       console.log("Interval running");
