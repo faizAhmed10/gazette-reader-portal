@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://gazette-backend-production.up.railway.app",
-        changeOrigin: true,  // This helps with SSL issues
+        changeOrigin: true, 
         secure: false,  
       },
     },
