@@ -54,7 +54,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     try {
-      let response = await fetch("/api/reader/create-reader/", {
+      let response = await fetch(`${backendUrl}api/reader/create-reader/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export const ContextProvider = ({ children }) => {
       });
 
       if (response.status === 201) {
-        let response2 = await fetch("/api/token/", {
+        let response2 = await fetch(`${backendUrl}api/token/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export const ContextProvider = ({ children }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      let response = await fetch("/api/token/", {
+      let response = await fetch(`${backendUrl}api/token/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +153,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     try {
-      let response = await fetch("/api/token/refresh/", {
+      let response = await fetch(`${backendUrl}api/token/refresh/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

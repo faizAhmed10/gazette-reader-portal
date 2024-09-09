@@ -6,7 +6,7 @@ import Hamburger from "../components/Hamburger";
 import { FaTimes, FaFilter } from "react-icons/fa";
 
 const AllArticlesPage = () => {
-  let { authTokens } = useContext(ReaderContext);
+  let { authTokens, backendUrl } = useContext(ReaderContext);
   const [articles, setArticles] = useState(null);
   const [authors, setAuthors] = useState(null);
   const [categories, setCategories] = useState(null);
@@ -28,7 +28,7 @@ const AllArticlesPage = () => {
       if (selectedCategory) queryParams.append("category", selectedCategory);
       if (selectedDate) queryParams.append("date", selectedDate);
 
-      const url = `/api/reader/articles/?${queryParams.toString()}`;
+      const url = `${backendUrl}api/reader/articles/?${queryParams.toString()}`;
       let response = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const AllArticlesPage = () => {
   const fetchAuthorsCategories = async () => {
     try {
       setLoading(true);
-      const authorResponse = await fetch("/api/reader/get-authors/", {
+      const authorResponse = await fetch(`${backendUrl}api/reader/get-authors/`, {
         headers: {
           Authorization: `Bearer ${authTokens.access}`,
         },
@@ -60,7 +60,7 @@ const AllArticlesPage = () => {
       const authorData = await authorResponse.json();
       setAuthors(authorData);
 
-      const categoryResponse = await fetch("/api/reader/get-categories/", {
+      const categoryResponse = await fetch(`${backendUrl}api/reader/get-categories/`, {
         headers: {
           Authorization: `Bearer ${authTokens.access}`,
         },

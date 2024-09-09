@@ -18,7 +18,7 @@ const CommentSection = ({
 }) => {
   const [showReplies, setShowReplies] = useState({});
   const [page, setPage] = useState(1); // Track current page
-  let {authTokens, readerName} = useContext(ReaderContext)
+  let {authTokens, readerName, backendUrl} = useContext(ReaderContext)
 
   const handleReplyClick = (comment) => {
     setReplyingTo(comment);
@@ -34,7 +34,7 @@ const CommentSection = ({
 
   const fetchMoreComments = useCallback(async () => {
     try {
-      const response = await fetch(`/api/reader/comments/get/${id}?page=${page + 1}&page_size=5`, {
+      const response = await fetch(`${backendUrl}api/reader/comments/get/${id}?page=${page + 1}&page_size=5`, {
         headers: {
           Authorization: `Bearer ${authTokens.access}`,
         },

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Article = () => {
   const { id } = useParams();
-  const { authTokens } = useContext(ReaderContext);
+  const { authTokens, backendUrl } = useContext(ReaderContext);
   const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
@@ -16,11 +16,11 @@ const Article = () => {
   const [hasMore, setHasMore] = useState(true);
   const [replyingTo, setReplyingTo] = useState(null); 
   const [box, setBox] = useState(true)
-  const backendUrl = "http://127.0.0.1:8000"
+
   const getArticle = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/reader/article/${id}/`, {
+      const response = await fetch(`${backendUrl}api/reader/article/${id}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${authTokens.access}`,
@@ -40,7 +40,7 @@ const Article = () => {
   const getComments = async (pageNumber = 1) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/reader/comments/get/${id}?page=${pageNumber}&page_size=5`, {
+      const response = await fetch(`${backendUrl}api/reader/comments/get/${id}?page=${pageNumber}&page_size=5`, {
         headers: {
           Authorization: `Bearer ${authTokens.access}`,
         },
@@ -93,7 +93,7 @@ const Article = () => {
 
   const handleCommentSubmit = async (commentText, parent = null) => {
     try {
-      const response = await fetch(`/api/reader/comments/create/${id}/`, {
+      const response = await fetch(`${backendUrl}api/reader/comments/create/${id}/`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${authTokens.access}`,
@@ -121,7 +121,7 @@ const Article = () => {
 
   const handleDelete = async (commentId) => {
     try {
-      const response = await fetch(`/api/reader/comments/delete/${commentId}/`, {
+      const response = await fetch(`${backendUrl}api/reader/comments/delete/${commentId}/`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${authTokens.access}`,

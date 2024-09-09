@@ -4,14 +4,14 @@ import ArticleListItem from "../components/ArticleListItem"
 import Loader from "../utils/Loader";
 
 const ArticleListPage = () => {
-  let { authTokens } = useContext(ReaderContext);
+  let { authTokens, backendUrl } = useContext(ReaderContext);
   let [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false)
 
   const getFreshArticles = async () => {
     try {
       setLoading(true)
-      let response = await fetch("/api/reader/todays-articles/", {
+      let response = await fetch(`${backendUrl}api/reader/todays-articles/`, {
         headers: {
           "Authorization": `Bearer ${authTokens.access}`
         }
