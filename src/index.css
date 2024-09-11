@@ -5,6 +5,24 @@
 body{
     overflow-x: hidden;
 }
+input[type="date"] {
+    color: black; /* Text color */
+    background-color: white; /* Ensure background is white */
+  }
+  
+  input[type="date"]::-webkit-datetime-edit {
+    color: black; /* Targeting Safari mobile */
+  }
+  
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-clear-button {
+    display: none; /* Hide unnecessary UI elements on some mobile browsers */
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: black;
+  }
+  
 .background{
     background-image: url(../public/bg-4.jpg);
     background-position: center;

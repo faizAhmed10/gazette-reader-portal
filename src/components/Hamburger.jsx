@@ -50,7 +50,7 @@ const Hamburger = ({
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="rounded p-2 border border-black text-black my-2"
+            className="rounded p-2 border border-black my-2"
             style={{ color: "black" }} 
           />
 
