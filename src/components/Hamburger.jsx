@@ -45,8 +45,10 @@ const Hamburger = ({
         </select>
 
         {/* Date Filter Input */}
+        <label htmlFor="dt" className="text-white">Click here to set date</label>
         <input
           type="date"
+          id="dt"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
           className="rounded p-2 border border-black bg-white text-black my-2"
