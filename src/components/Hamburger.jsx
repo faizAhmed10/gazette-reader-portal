@@ -47,12 +47,18 @@ const Hamburger = ({
 
           {/* Date Filter Input */}
           <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="rounded p-2 border border-black my-2"
-            style={{ color: "black" }} 
-          />
+  type="date"
+  value={selectedDate}
+  onChange={(e) => setSelectedDate(e.target.value)}
+  className="rounded p-2 border border-black my-2"
+  style={{
+    color: "black", // Ensure text color is black
+    backgroundColor: "white", // Ensure background color is white
+    border: "1px solid black", // Add border to make it more visible
+    WebkitAppearance: "none", // Disable default styling in WebKit browsers (e.g. Safari)
+    MozAppearance: "textfield", // Disable default styling in Firefox
+  }}
+/>
 
           {/* Filter Button */}
           <button

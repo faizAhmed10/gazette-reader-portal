@@ -5,23 +5,30 @@
 body{
     overflow-x: hidden;
 }
+/* General input styling */
 input[type="date"] {
-    color: black; /* Text color */
-    background-color: white; /* Ensure background is white */
+    color: black !important;  /* Text color */
+    background-color: white !important;  /* Background color */
+    border: 1px solid black !important; /* Border color */
   }
   
+  /* Target Safari mobile specific styles */
   input[type="date"]::-webkit-datetime-edit {
-    color: black; /* Targeting Safari mobile */
+    color: black !important; /* Text color in the date input */
+    background-color: white !important; /* Background color */
   }
   
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-clear-button {
-    display: none; /* Hide unnecessary UI elements on some mobile browsers */
+  /* Hide the clear and spin buttons */
+  input[type="date"]::-webkit-clear-button, 
+  input[type="date"]::-webkit-inner-spin-button {
+    display: none !important;
   }
   
+  /* Calendar picker indicator styling */
   input[type="date"]::-webkit-calendar-picker-indicator {
-    color: black;
+    color: black !important;
   }
+  
   
 .background{
     background-image: url(../public/bg-4.jpg);
