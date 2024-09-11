@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReaderContext from '../utils/ReaderContext';
 const ArticleListItem = ({article}) => {
 
-    let {isSmallScreen, backendUrl} = useContext(ReaderContext)
+    let {isSmallScreen, cloudinaryUrl} = useContext(ReaderContext)
 
     return (
       <Link to={`/article/${article.id}`} className='lg:w-[90%]'>
