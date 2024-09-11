@@ -15,7 +15,7 @@ const ArticleListItem = ({article}) => {
           <div>
             {isSmallScreen && article.image && <img 
           className="shadow-xl block rounded mx-auto max-h-[250px] object-cover my-auto"
-          src={article.image.url} alt='...'/>}
+          src={`${cloudinaryUrl}${article.image}`} alt='...'/>}
           
           <p className="font-extrabold text-3xl lg:text-4xl">{!isSmallScreen ? article.title : article.title.substring(0,40) + "..."}</p>
           <p className="font-bold text-2xl">{!isSmallScreen ? article.sub_title : article.sub_title.substring(0, 30) + "..."}</p>
@@ -28,7 +28,7 @@ const ArticleListItem = ({article}) => {
           </div>
           {!isSmallScreen && article.image && <img 
           className="shadow-xl block rounded w-[30%] max-h-[250px] object-cover mx-2 my-auto"
-          src={article.image.url} alt='...'/>}
+          src={`${cloudinaryUrl}${article.image}`} alt='...'/>}
           </div>
           <div className="flex items-center">
             <p className="border rounded text-center p-1 border-black">

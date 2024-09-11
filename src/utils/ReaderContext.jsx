@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
 
   let [loading, setLoading] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const cloudinaryUrl = import.meta.env.VITE_IMAGE_URL;
   let [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
   const [authTokens, setAuthTokens] = useState(() => {
@@ -222,6 +223,7 @@ export const ContextProvider = ({ children }) => {
     authTokens: authTokens,
     loading: loading,
     isSmallScreen: isSmallScreen,
+    cloudinaryUrl: cloudinaryUrl,
     backendUrl: backendUrl,
     registerReader: registerReader,
     login: login,

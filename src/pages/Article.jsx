@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Article = () => {
   const { id } = useParams();
-  const { authTokens, backendUrl } = useContext(ReaderContext);
+  const { authTokens, backendUrl, cloudinaryUrl } = useContext(ReaderContext);
   const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
@@ -165,7 +165,7 @@ const Article = () => {
           {article.image && (
             <img
             className="block rounded w-full h-auto max-h-[700px] object-cover"
-              src={article.image.url}
+            src={`${cloudinaryUrl}${article.image}`}
               alt="loading..."
             />
           )}
