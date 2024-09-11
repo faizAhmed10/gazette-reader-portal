@@ -14,11 +14,11 @@ const AllArticlesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [loading, setLoading] = useState(false);
-  const [displayFilter, setDisplayFilter] = useState(false)
+  const [displayFilter, setDisplayFilter] = useState(false);
 
   const toggleDisplayFilter = () => {
-    setDisplayFilter(!displayFilter)
-  }
+    setDisplayFilter(!displayFilter);
+  };
 
   const getArticlesByQuery = async () => {
     setLoading(true);
@@ -52,26 +52,32 @@ const AllArticlesPage = () => {
   const fetchAuthorsCategories = async () => {
     try {
       setLoading(true);
-      const authorResponse = await fetch(`${backendUrl}api/reader/get-authors/`, {
-        headers: {
-          Authorization: `Bearer ${authTokens.access}`,
-        },
-      });
+      const authorResponse = await fetch(
+        `${backendUrl}api/reader/get-authors/`,
+        {
+          headers: {
+            Authorization: `Bearer ${authTokens.access}`,
+          },
+        }
+      );
       const authorData = await authorResponse.json();
       setAuthors(authorData);
 
-      const categoryResponse = await fetch(`${backendUrl}api/reader/get-categories/`, {
-        headers: {
-          Authorization: `Bearer ${authTokens.access}`,
-        },
-      });
+      const categoryResponse = await fetch(
+        `${backendUrl}api/reader/get-categories/`,
+        {
+          headers: {
+            Authorization: `Bearer ${authTokens.access}`,
+          },
+        }
+      );
       const categoryData = await categoryResponse.json();
       setCategories(categoryData);
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -83,11 +89,13 @@ const AllArticlesPage = () => {
     <div className="lg:w-[90%] mx-auto my-3 ">
       {loading && <Loader />}
       <div>
-        <div className={"flex items-center justify-between w-[90%] mx-auto"}> 
-        <h2 className="text-5xl font-bold lg:text-left text-center mb-4">
-          All Articles
-        </h2>
-        <button className="font-bold" onClick={toggleDisplayFilter}>{displayFilter ? <FaTimes size={24}/> : <FaFilter size={24}/>}</button>
+        <div className={"flex items-center justify-between w-[90%] mx-auto"}>
+          <h2 className="text-5xl font-bold lg:text-left text-center mb-4">
+            All Articles
+          </h2>
+          <button className="font-bold" onClick={toggleDisplayFilter}>
+            {displayFilter ? <FaTimes size={24} /> : <FaFilter size={24} />}
+          </button>
         </div>
         {/* Display Articles */}
         <div>
@@ -104,15 +112,24 @@ const AllArticlesPage = () => {
       </div>
 
       {articles && (
-        <div className={`fixed z-50 top-0 left-0 h-[100dvh] w-1/2 bg-black p-5 flex flex-col gap-6 items-center transform transition-transform duration-300 lg:w-1/5   ${
-          displayFilter ? "translate-x-0" : "-translate-x-full"
-        } `}>
-        <Hamburger
-        selectedAuthor = {selectedAuthor} setSelectedAuthor = {setSelectedAuthor} authors = {authors} selectedCategory = {selectedCategory} setSelectedCategory = {setSelectedCategory} categories = {categories} selectedDate = {selectedDate} setSelectedDate = {setSelectedDate} getArticlesByQuery = {getArticlesByQuery} 
-        />
+        <div
+          className={`fixed z-50 top-0 left-0 h-[100dvh] w-1/2 bg-black p-5 flex flex-col gap-6 items-center transform transition-transform duration-300 lg:w-1/5 ${
+            displayFilter ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <Hamburger
+            selectedAuthor={selectedAuthor}
+            setSelectedAuthor={setSelectedAuthor}
+            authors={authors}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            categories={categories}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            getArticlesByQuery={getArticlesByQuery}
+          />
         </div>
       )}
-
     </div>
   );
 };
