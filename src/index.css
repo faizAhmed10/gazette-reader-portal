@@ -7,26 +7,16 @@ body{
 }
 /* General input styling */
 input[type="date"] {
-    color: black !important;  /* Text color */
-    background-color: white !important;  /* Background color */
-    border: 1px solid black !important; /* Border color */
+    color: black;
+    background-color: white;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 10px;
+    border-radius: 5px;
   }
   
-  /* Target Safari mobile specific styles */
-  input[type="date"]::-webkit-datetime-edit {
-    color: black !important; /* Text color in the date input */
-    background-color: white !important; /* Background color */
-  }
-  
-  /* Hide the clear and spin buttons */
-  input[type="date"]::-webkit-clear-button, 
-  input[type="date"]::-webkit-inner-spin-button {
-    display: none !important;
-  }
-  
-  /* Calendar picker indicator styling */
   input[type="date"]::-webkit-calendar-picker-indicator {
-    color: black !important;
+    filter: invert(1);
   }
   
   
